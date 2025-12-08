@@ -1,9 +1,9 @@
 name: Ultimate win64-gpl FFmpeg
 
 on:
-  workflow_dispatch:          # 纯手动触发，避免滥用
+  workflow_dispatch:          
   schedule:
-    - cron: '0 16 * * 0'      # 每周日 16:00 UTC 自动编一份最新版
+    - cron: '0 16 * * 0'      
 
 env:
   DOCKER_BUILDKIT: 1
@@ -68,7 +68,7 @@ jobs:
         run: |
           docker pull ghcr.io/btbn/ffmpeg-builds/base-win64:latest
 
-      - name:  构建“ultimate”镜像（复用官方 Dockerfile，只换参数）
+      - name:  构建并运行 ultimate 脚本
         run: |
           docker buildx build \
             --tag ghcr.io/${{ github.repository }}/ultimate-win64:latest \
@@ -78,9 +78,8 @@ jobs:
             --file images/base-win64/Dockerfile \
             --load \
             .
-            
+          # 直接执行镜像里已经有的脚本
           docker run --rm \
-            -v $PWD/scripts:/scripts \
             -e VARIANT=gpl \
             -e TARGET=win64 \
             ghcr.io/${{ github.repository }}/ultimate-win64:latest \
