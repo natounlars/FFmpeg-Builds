@@ -51,5 +51,3 @@ ENV PATH="/opt/ct-ng/bin:${PATH}" \
     LDFLAGS="-static-libgcc -static-libstdc++ -L/opt/ffbuild/lib -O2 -pipe -fstack-protector-strong" \
     STAGE_CFLAGS="-fno-semantic-interposition" \
     STAGE_CXXFLAGS="-fno-semantic-interposition"
-COPY scripts/ultimate-deps.sh /scripts/ultimate-deps.sh
-RUN chmod +x /scripts/ultimate-deps.sh
