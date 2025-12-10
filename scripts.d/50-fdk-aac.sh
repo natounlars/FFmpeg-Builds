@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SCRIPT_REPO="https://bgithub.xyz/mstorsjo/fdk-aac.git"
+SCRIPT_REPO="https://github.com/mstorsjo/fdk-aac.git"
 SCRIPT_COMMIT="d8e6b1a3aa606c450241632b64b703f21ea31ce3"
 
 ffbuild_enabled() {
